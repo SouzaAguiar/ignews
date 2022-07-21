@@ -33,7 +33,7 @@ export default async function webHooks(
 
     try {
       event = stripe.webhooks.constructEvent(
-        buf,
+        req.body,
         secret,
         process.env.STRIPE_WEBHOOK_SECRET
       );
