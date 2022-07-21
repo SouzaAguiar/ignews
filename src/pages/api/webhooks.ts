@@ -29,7 +29,7 @@ export default async function webHooks(
   if (req.method === "POST") {
     const buf = await buffer(req);
     const secret = req.headers["stripe-signature"] as string;
-    const secret_ = secret.split(",")[1].split(",")[1];
+    const secret_ = secret.split(",")[1].split("=")[1];
     let event: Stripe.Event;
 
     try {
