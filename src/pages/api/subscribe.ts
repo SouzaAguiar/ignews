@@ -49,6 +49,7 @@ const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
       success_url: process.env.STRIPE_SUCCESS_URL,
       cancel_url: process.env.STRIPE_CANCEL_URL,
     });
+    console.log(process.env.STRIPE_CANCEL_URL);
     res.status(200).json({ sessionId: stripeCheckoutSession.id });
   } else {
     res.setHeader("ALLOW", "POST");
