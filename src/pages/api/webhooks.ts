@@ -35,12 +35,13 @@ export default async function webHooks(
     try {
       event = stripe.webhooks.constructEvent(
         req.body,
-        secret,
+        secret_,
         process.env.STRIPE_WEBHOOK_SECRET
       );
     } catch (error) {
       console.log(secret);
       console.log(secret_);
+      console.log(error);
       return res.status(400).send(`Webhook Error: ${error.message}`);
     }
     const { type } = event;
