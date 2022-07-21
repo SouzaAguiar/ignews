@@ -38,6 +38,7 @@ export default async function webHooks(
         process.env.STRIPE_WEBHOOK_SECRET
       );
     } catch (error) {
+      console.log(error);
       return res.status(400).send(`Webhook Error: ${error.message}`);
     }
     const { type } = event;
