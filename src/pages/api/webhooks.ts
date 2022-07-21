@@ -28,7 +28,8 @@ export default async function webHooks(
 ) {
   if (req.method === "POST") {
     const buf = await buffer(req);
-    const secret = req.headers["stripe-signature"];
+    const secret = req.headers["stripe-signature"] as string;
+    const secret_ = secret.split(",")[1].split(",")[1];
     let event: Stripe.Event;
 
     try {
@@ -39,6 +40,7 @@ export default async function webHooks(
       );
     } catch (error) {
       console.log(secret);
+      console.log(secret_);
       return res.status(400).send(`Webhook Error: ${error.message}`);
     }
     const { type } = event;
