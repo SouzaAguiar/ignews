@@ -40,7 +40,7 @@ export default async function webHooks(
       );
     } catch (error) {
       console.log(secret);
-      console.log(error);
+
       return res.status(400).send(`Webhook Error: ${error.message}`);
     }
     const { type } = event;
